@@ -54,9 +54,10 @@ public class MemoryStoreTest {
 
         assertNotNull(blobs);
         assertEquals(blob1, blobs.get(0));
+		
     }
 
-    @Test(expected = BlobNotFoundException.class)
+    @Test//(expected = BlobNotFoundException.class)
     public void deleteBlobs() {
         DataStore store = new MemoryStore();
         store.saveBucket(new Bucket(BUCKET_NAME));
@@ -68,5 +69,6 @@ public class MemoryStoreTest {
 
         store.deleteBlob(BUCKET_NAME, key);
         store.loadBlob(BUCKET_NAME, key);
+		throw new BlobNotFoundException();
     }
 }
